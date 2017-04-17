@@ -2,10 +2,11 @@ var http = require('http');
 var fs = require('fs');
 //var path = require('path');
 var extract = require('./extract');
+var wss = require('./websockets-server');
 
 var handleError = function (err,res) {
   res.writeHead(404);
-  res.end();
+  res.end('<h1>File does NOT exist!</h1>');
 };
 
 var server = http.createServer(function (req,res) {
@@ -16,6 +17,7 @@ var server = http.createServer(function (req,res) {
       handleError(err,res);
       return;
     }else {
+      res.setHeader('Content-Type','text/html');
       res.end(data);
     }
 
