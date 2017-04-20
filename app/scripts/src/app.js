@@ -3,4 +3,5 @@ class ChatApp{
     console.log('Hello ES6!');
   }
 }
+
 export default ChatApp;
